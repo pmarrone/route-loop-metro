@@ -2,7 +2,14 @@
 var g_tileGrid;
 
 function TileGrid() {
-	var self = this;
+    var canvasWidth;
+    var canvasHeight;
+    var screenWidth = window.outerWidth;
+    var screenHeight = window.outerHeight;
+    var scaleFactorX;
+    var scaleFactorY;
+
+    var self = this;
 	g_tileGrid = this;
 	this.x = 170;
 	this.y = 30;
@@ -36,8 +43,14 @@ function TileGrid() {
 			 { selectedType: 7, canNorth: true, canSouth: false, canWest: true, canEast: false, onCenter: northWestTurn, availableTypes: [6, 13, 23, 30]},
 			 { selectedType: 8, canNorth: false, canSouth: false, canWest: false, canEast: false, onCenter: null, availableTypes: [5, 14, 22, 31]}]};
 	
-    this.init = function () {
-		canister = new Canister(self)
+	this.init = function () {
+	    var canvas = document.getElementById("canvas");
+	    canvasWidth = canvas.width;
+	    canvasHeight = canvas.height;
+
+	    scaleFactorY = canvasHeight / screenHeight;
+	    scaleFactorX = canvasWidth / screenWidth;
+	    canister = new Canister(self)
 		canister.init();
 		g_canister = canister;
 		
@@ -46,7 +59,8 @@ function TileGrid() {
 		
 		car = new Car(self);
 		g_car = car;
-		car.tileXPos = 50;
+        //Set car in the center of the tile
+		car.tileXPos = 50; 
 		car.tileYPos = 50;
 		car.tileX = g_goalAreaX;
 		car.tileY = g_goalAreaY;
@@ -85,27 +99,27 @@ function TileGrid() {
 	//	enviroment = 1;
 	//}
 	
-	//function correctPointer(ev) {
-	//		var offsetX = 0;
-	//		var offsetY = 0;
+	function correctPointer(ev) {
+			//var offsetX = 0;
+			//var offsetY = 0;
 
-	//		//if (ev.offsetY) {
-	//		//	offsetX = ev.offsetX;
-	//		//	offsetY = ev.offsetY;
-	//		//} else {
-	//		    offsetX = ev.clientX - ev.currentTarget.offsetLeft;
-	//			offsetY = ev.clientY;
-	//		//}
+			////if (ev.offsetY) {
+			////	offsetX = ev.offsetX;
+			////	offsetY = ev.offsetY;
+			////} else {
+			//    offsetX = ev.clientX - ev.currentTarget.offsetLeft;
+			//	offsetY = ev.clientY;
+			////}
 
-	//		pointerX = offsetX;
-	//		pointerY = offsetY;
-	//}
+			//pointerX = offsetX;
+	    //pointerY = offsetY;
+	    pointerX = ev.clientX * scaleFactorX;
+	    pointerY = ev.clientY * scaleFactorY;
+	}
 	
 	function getMouseMove(ev) {
 		if (draggingObject != null) {
-		    //correctPointer(ev);
-		    pointerX = ev.clientX;
-		    pointerY = ev.clientY;
+		    correctPointer(ev);
 		}
 	}
 	
@@ -113,9 +127,7 @@ function TileGrid() {
 	
 	function getMouseDown(ev) {
 		//g_game.resources.explotion.play();
-	    //correctPointer(ev);
-	    pointerX = ev.clientX;
-	    pointerY = ev.clientY;
+	    correctPointer(ev);
 
 		if (pointerX > self.x && pointerX < self.x + tileWidth * sizeX && self.y < pointerY && self.y + tileHeight * sizeY > pointerY) {
 			//we're inside the grid

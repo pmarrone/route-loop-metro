@@ -159,9 +159,9 @@ function TileGrid() {
 	}
 	
 	function getMouseUp(ev) {
-	    //correctPointer(ev);
-	    pointerX = ev.clientX;
-	    pointerY = ev.clientY;
+	    correctPointer(ev);
+	    //pointerX = ev.clientX;
+	    //pointerY = ev.clientY;
 		
 		if (pointerX > self.x && pointerX < self.x + tileWidth * sizeX && self.y < pointerY && self.y + tileHeight * sizeY > pointerY) {
 			tileX = parseInt((pointerX - self.x) / tileWidth);

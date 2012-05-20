@@ -71,7 +71,8 @@ function TileGrid() {
 		c.addEventListener("mousemove", getMouseMove);
     }
 	
-	this.loadLevelTiles = function() {
+	this.loadLevelTiles = function () {
+	    draggingObject = null;
 		tiles.splice(0);
 		for (i = 0; i < sizeX; i++) {
 			tileRow = new Array();
@@ -132,7 +133,7 @@ function TileGrid() {
 					tileType: selected.tileType,
 					offsetY: (pointerY - self.y) % tileHeight,
 					offsetX: (pointerX - self.x) % tileWidth
-				};			
+                };
 			}
 		}
 	}
@@ -237,34 +238,34 @@ function TileGrid() {
 			tileX = parseInt((pointerX - self.x) / tileWidth);
 			tileY = parseInt((pointerY - self.y) / tileHeight);
 			
-			if (tileX < 0 || tileY < 0 || tileX >= tiles.length || tileY >= tiles[0].length) {
-				return;
-			}
 		
 			context.save();
-				greenTile = tiles[tileX][tileY];
-			
-				context.globalAlpha = 0.5;
-			
-				for (i = 0; i < drawBag.length; i++) {
-					//if (drawBag[i].x != tileX && drawBag[i].y != tileY) {
-						context.strokeStyle = '#FF0000';
-						context.fillStyle = '#FF0000';
-						context.lineWidth = 5;
-						context.strokeRect(self.x + (drawBag[i].x * tileWidth), self.y + (drawBag[i].y * tileWidth), tileWidth, tileHeight);
-						context.fillRect(self.x + (drawBag[i].x * tileWidth), self.y + (drawBag[i].y * tileWidth), tileWidth, tileHeight);
-					//}
-				}
-			
-				if (greenTile.tileType.selectedType === 0) {
-					var cX = self.x + (tileX * tileWidth);
-					var cY = self.y + (tileY * tileHeight);
-					context.strokeStyle = '#00FF00';
-					context.fillStyle = '#00FF00';
-					context.lineWidth = 5;
-					context.strokeRect(cX, cY, tileWidth, tileHeight);
-					context.fillRect(cX, cY, tileWidth, tileHeight);
-				}
+			context.globalAlpha = 0.5;
+
+                //If dragging and we're inside the grid, draw the green and red squares
+				if (tileX >= 0 && tileY >= 0 && tileX < tiles.length && tileY < tiles[0].length) {
+				    greenTile = tiles[tileX][tileY];
+				    for (i = 0; i < drawBag.length; i++) {
+				        //if (drawBag[i].x != tileX && drawBag[i].y != tileY) {
+				        context.strokeStyle = '#FF0000';
+				        context.fillStyle = '#FF0000';
+				        context.lineWidth = 5;
+				        context.strokeRect(self.x + (drawBag[i].x * tileWidth), self.y + (drawBag[i].y * tileWidth), tileWidth, tileHeight);
+				        context.fillRect(self.x + (drawBag[i].x * tileWidth), self.y + (drawBag[i].y * tileWidth), tileWidth, tileHeight);
+				        //}
+				    }
+
+				    if (greenTile.tileType.selectedType === 0) {
+				        var cX = self.x + (tileX * tileWidth);
+				        var cY = self.y + (tileY * tileHeight);
+				        context.strokeStyle = '#00FF00';
+				        context.fillStyle = '#00FF00';
+				        context.lineWidth = 5;
+				        context.strokeRect(cX, cY, tileWidth, tileHeight);
+				        context.fillRect(cX, cY, tileWidth, tileHeight);
+				    }
+
+                }
 			
 /* 				sourceX = parseInt(tiles[draggingObject.tileX][draggingObject.tileY].selectedType % 8) * tileWidth + 1;
 				sourceY = parseInt(tiles[draggingObject.tileX][draggingObject.tileY].selectedType / 8) * tileHeight + 1; */

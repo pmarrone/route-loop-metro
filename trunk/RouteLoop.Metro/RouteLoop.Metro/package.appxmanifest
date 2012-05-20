@@ -17,7 +17,7 @@
   <Applications>
     <Application Id="App" StartPage="default.html">
       <VisualElements DisplayName="RouteLoop" Logo="images\150x150.png" SmallLogo="images\30x30.png" Description="RouteLoop for Windows 8 Metro technology. HTML5 game ported to Windows 8." ForegroundText="light" BackgroundColor="#000000">
-        <DefaultTile ShowName="allLogos" ShortName="RouteLoop" WideLogo="images\310x150.png" />
+        <DefaultTile ShowName="noLogos" ShortName="RouteLoop" WideLogo="images\310x150.png" />
         <SplashScreen Image="images\620x300.png" BackgroundColor="#333366" />
         <InitialRotationPreference>
           <Rotation Preference="landscape" />

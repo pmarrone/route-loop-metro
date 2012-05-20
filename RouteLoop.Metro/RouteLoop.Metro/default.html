@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>RouteLoop.Metro</title>
+
+    <!-- WinJS references -->
+    <link href="//Microsoft.WinJS.0.6/css/ui-light.css" rel="stylesheet">
+    <script src="//Microsoft.WinJS.0.6/js/base.js"></script>
+    <script src="//Microsoft.WinJS.0.6/js/ui.js"></script>
+
+    <!-- RouteLoop.Metro references -->
+    <link href="/css/default.css" rel="stylesheet">
+    <script src="/js/levels.js"></script>
+    <script src="/js/utils.js"></script>
+	<script src="/js/PxLoader.js"></script>
+	<script src="/js/PxLoaderImage.js"></script>  
+	<script src="/js/PxLoaderSound.js"></script>
+	<script src="/js/Car.js"></script>
+	<script src="/js/TileGrid.js"></script>
+	<script src="/js/background.js"></script>
+	<script src="/js/command.js"></script>
+	<script src="/js/mousePointer.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/default.js"></script>
+</head>
+<body>
+    <div class="headerTemplate" data-win-control="WinJS.Binding.Template">
+        <h2 class="group-title" style="white-space: nowrap;" data-win-bind="textContent: title" ></h2>
+    </div>
+    <div class="itemtemplate" data-win-control="WinJS.Binding.Template">
+        <img data-win-bind="src: levelbackground" width="270" height="300" />
+        <div style="height: 120px; width: 270px;
+                   text-align: left; left: -10px;
+                   margin-top: -5px;
+                   padding-left: 5px;
+                   padding-top: 10px;"
+            data-win-bind="style.backgroundColor: backgroundColor">
+            <img src="/resources/gas.png" width="32" height="32" style="vertical-align: middle;" /> x <span data-win-bind="textContent: totalGas;"></span><br />
+            <span style="font-size: 22pt; font-weight: 500" data-win-bind="textContent: levelType"></span>
+        </div>
+    </div>
+
+    <div id="superContainer" style="text-align: center;
+                width: 100%; height: 100%;
+                display: -ms-grid;
+                -ms-grid-rows: 150px 1fr;
+                -ms-grid-columns: 86px 1fr;
+                background-image: url(/Resources/fondomenu3.png);">
+        <button class="win-backbutton" aria-label="Back" id="backButton" 
+            style="margin: 15px 0px 0px 20px; display: none;"></button>
+        <img src="/images/upperLogo.png" width="186" height="90"
+            style="-ms-grid-column: 2; -ms-grid-row: 1; border-radius: 5px; margin-top: 15px;" />
+        
+            
+            <canvas width="640" height="480"
+                style="-ms-grid-column: 2; -ms-grid-row: 2; display: none;
+                       border-radius: 10px;" id="canvas"></canvas>
+        
+        <div style="-ms-grid-row: 2; -ms-grid-column-span: 2;
+                    width: 100%;
+                    height: 100%;
+                    display: block; opacity: 1;"
+             data-win-control="WinJS.UI.ListView"
+             data-win-options="{ selectionMode: 'none' }"
+             class="levelGrid">
+        </div>
+        <div id="snappedMessage" style="display: none;
+                    margin-top: 150px; color: white;
+                    margin-left: 15px; font-size: 32pt;
+                    font-weight: 100;
+                    -ms-grid-column-span: 2; -ms-grid-row: 2;">Go full screen to play.</div>
+    </div>
+</body>
+</html>

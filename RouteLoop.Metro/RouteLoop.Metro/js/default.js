@@ -121,6 +121,14 @@
         }
     }
 
+    function windowResized(e) {
+        var c = document.getElementById("canvas");
+        screenHeight = window.outerHeight;
+        screenWidth = window.outerWidth;
+        scaleFactorY = c.height / screenHeight;
+        scaleFactorX = c.width / screenWidth;
+    }
+
     app.onactivated = function (eventObject) {
         if (eventObject.detail.kind === Windows.ApplicationModel.Activation.ActivationKind.launch) {
             if (eventObject.detail.previousExecutionState !== Windows.ApplicationModel.Activation.ApplicationExecutionState.terminated) {
@@ -131,12 +139,15 @@
                 // Restore application state here.
             }
             WinJS.UI.processAll().then(function (e) {
+                screenHeight = window.outerHeight;
+                screenWidth = window.outerWidth;
 
                 var appView = Windows.UI.ViewManagement.ApplicationView;
                 appView.getForCurrentView().onviewstatechanged = _viewstatechanged.bind(this);
 
                 window.addEventListener("blur", blurHandler, false);
                 window.addEventListener("focus", focusHandler, false);
+                window.addEventListener("resize", windowResized, false);
 
                 backButton.addEventListener("click", function () {
                     GoBack();

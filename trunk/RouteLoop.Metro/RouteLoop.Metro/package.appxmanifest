@@ -3,8 +3,8 @@
   <Identity Name="c526a0fc-bd14-4c0f-9ba1-7c706b654b30" Version="1.0.0.2" Publisher="CN=Matias" />
   <Properties>
     <DisplayName>RouteLoop</DisplayName>
-    <Description>RouteLoop.Metro</Description>
-    <PublisherDisplayName>Matias Iacono</PublisherDisplayName>
+    <Description>RouteLoop</Description>
+    <PublisherDisplayName>Tortuga Team</PublisherDisplayName>
     <Logo>images\50x50.png</Logo>
   </Properties>
   <Prerequisites>

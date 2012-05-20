@@ -72,16 +72,16 @@ function Game() {
 	this.destroy = function() {
 	    clearInterval(intervalId);
 
-	    for (var i = 0; i < gameObjects.length; i++) {
-	        gameObjects.pop();
-	    }
-
 	    for (var i = 0; i < objectToBeAdded.length; i++) {
 	        objectToBeAdded.pop();
         }
 
 	    for (var i = 0; i < objectToDeleted.length; i++) {
 	        objectToDeleted.pop();
+        }
+
+	    for (var i = 0; i < gameObjects.length; i++) {
+	        gameObjects.pop();
 	    }
 	}
 

@@ -11,6 +11,6 @@
     <DebuggerFlavor>AppHostSimulatorDebugger</DebuggerFlavor>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebuggerFlavor>AppHostLocalDebugger</DebuggerFlavor>
+    <DebuggerFlavor>AppHostSimulatorDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>

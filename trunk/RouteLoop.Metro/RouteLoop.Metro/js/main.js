@@ -25,7 +25,12 @@ var g_timeBetweenLevels = 3000;
 var g_score = 0;
 var g_showingLevelUp = false;
 var intervalId;
-	
+
+var screenWidth;
+var screenHeight;
+var scaleFactorX;
+var scaleFactorY;
+
 function Game() {
 	var tileGrid = null;
 	var backBufferCanvas = null;

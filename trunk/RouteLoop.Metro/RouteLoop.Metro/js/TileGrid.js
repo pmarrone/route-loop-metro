@@ -4,10 +4,6 @@ var g_tileGrid;
 function TileGrid() {
     var canvasWidth;
     var canvasHeight;
-    var screenWidth = window.outerWidth;
-    var screenHeight = window.outerHeight;
-    var scaleFactorX;
-    var scaleFactorY;
 
     var self = this;
 	g_tileGrid = this;
@@ -95,24 +91,7 @@ function TileGrid() {
 		}
 	}
 	
-	//function ChangeEnviromentTo(toEnviroment) {	
-	//	enviroment = 1;
-	//}
-	
 	function correctPointer(ev) {
-			//var offsetX = 0;
-			//var offsetY = 0;
-
-			////if (ev.offsetY) {
-			////	offsetX = ev.offsetX;
-			////	offsetY = ev.offsetY;
-			////} else {
-			//    offsetX = ev.clientX - ev.currentTarget.offsetLeft;
-			//	offsetY = ev.clientY;
-			////}
-
-			//pointerX = offsetX;
-	    //pointerY = offsetY;
 	    pointerX = ev.clientX * scaleFactorX;
 	    pointerY = ev.clientY * scaleFactorY;
 	}

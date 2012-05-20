@@ -99,8 +99,9 @@ function Game() {
 		});
 		
 		loader.addProgressListener(function (e) {
-			tempCtx.fillStyle = 'rgb(0,0,0)';
-			tempCtx.fillRect(0, 0, 640, 480);
+		    tempCtx.fillStyle = 'rgb(0,0,0)';
+		    tempCtx.fillRect(0, 0, window.outerWidth, window.outerHeight);
+			//tempCtx.fillRect(0, 0, 640, 480);
 			
 			tempCtx.fillStyle = '#FFFFFF';
 			tempCtx.font = 'bold 30px arial';

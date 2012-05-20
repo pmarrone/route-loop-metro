@@ -85,25 +85,27 @@ function TileGrid() {
 	//	enviroment = 1;
 	//}
 	
-	function correctPointer(ev) {
-			var offsetX = 0;
-			var offsetY = 0;
+	//function correctPointer(ev) {
+	//		var offsetX = 0;
+	//		var offsetY = 0;
 
-			if (ev.offsetY) {
-				offsetX = ev.offsetX;
-				offsetY = ev.offsetY;
-			} else {
-				offsetX = ev.clientX - ev.currentTarget.offsetLeft;
-				offsetY = ev.clientY;
-			}
-		
-			pointerX = offsetX;
-			pointerY = offsetY;
-	}
+	//		//if (ev.offsetY) {
+	//		//	offsetX = ev.offsetX;
+	//		//	offsetY = ev.offsetY;
+	//		//} else {
+	//		    offsetX = ev.clientX - ev.currentTarget.offsetLeft;
+	//			offsetY = ev.clientY;
+	//		//}
+
+	//		pointerX = offsetX;
+	//		pointerY = offsetY;
+	//}
 	
 	function getMouseMove(ev) {
 		if (draggingObject != null) {
-			correctPointer(ev);
+		    //correctPointer(ev);
+		    pointerX = ev.clientX;
+		    pointerY = ev.clientY;
 		}
 	}
 	
@@ -111,7 +113,10 @@ function TileGrid() {
 	
 	function getMouseDown(ev) {
 		//g_game.resources.explotion.play();
-		correctPointer(ev);
+	    //correctPointer(ev);
+	    pointerX = ev.clientX;
+	    pointerY = ev.clientY;
+
 		if (pointerX > self.x && pointerX < self.x + tileWidth * sizeX && self.y < pointerY && self.y + tileHeight * sizeY > pointerY) {
 			//we're inside the grid
 			tileX = parseInt((pointerX - self.x) / tileWidth);
@@ -142,7 +147,9 @@ function TileGrid() {
 	}
 	
 	function getMouseUp(ev) {
-		correctPointer(ev);
+	    //correctPointer(ev);
+	    pointerX = ev.clientX;
+	    pointerY = ev.clientY;
 		
 		if (pointerX > self.x && pointerX < self.x + tileWidth * sizeX && self.y < pointerY && self.y + tileHeight * sizeY > pointerY) {
 			tileX = parseInt((pointerX - self.x) / tileWidth);

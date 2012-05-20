@@ -197,9 +197,4 @@ function GoBack() {
         WinJS.UI.Animation.fadeIn(theGrid);
 
     }, function () { })
-
-    //document.querySelector("#backButton").style.display = 'none';
-    //document.querySelector('#superContainer').style.backgroundImage = "url(/resources/fondomenu3.png)";
-    //document.querySelector('.levelGrid').style.display = "block";
-    //document.querySelector('#canvas').style.display = "none";
 }

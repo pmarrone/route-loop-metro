@@ -28,7 +28,7 @@
         document.querySelector('.levelGrid').style.display = "none";
         var theCanvas = document.querySelector('#canvas');
 
-        document.querySelector('#superContainer').style.backgroundImage = "url(/resources/woodrepeater.jpg)";
+        //document.querySelector('#superContainer').style.backgroundImage = "url(/resources/woodrepeater.jpg)";
 
         var item = eventObject.detail.itemPromise._value.data;
 
@@ -89,7 +89,6 @@
                 g_game.pause();
                 document.querySelector('#backButton').style.display = 'none';
                 document.querySelector('#canvas').style.display = 'none';
-                document.querySelector('#superContainer').style.backgroundImage = "url(/resources/fondomenu3.png)";
             } else {
                 document.querySelector('.levelGrid').style.display = 'none';
             }
@@ -97,7 +96,6 @@
             document.querySelector('#snappedMessage').style.display = 'block';
         } else {
             if (g_game) {
-                document.querySelector('#superContainer').style.backgroundImage = "url(/resources/woodrepeater.jpg)";
                 g_game.resume();
                 document.querySelector('#backButton').style.display = 'inline';
                 document.querySelector('#canvas').style.display = 'inline';
@@ -117,7 +115,9 @@
 
     function focusHandler(e) {
         if (g_game) {
-            g_game.resume();
+            if (Windows.UI.ViewManagement.ApplicationView.value === Windows.UI.ViewManagement.ApplicationViewState.fullScreenLandscape) {
+                g_game.resume();
+            }
         }
     }
 
@@ -202,7 +202,7 @@ function GoBack() {
         theCanvas.style.display = "none";
 
         document.querySelector("#backButton").style.display = 'none';
-        document.querySelector('#superContainer').style.backgroundImage = "url(/resources/fondomenu3.png)";
+        //document.querySelector('#superContainer').style.backgroundImage = "url(/resources/fondomenu3.png)";
 
         theGrid.style.display = "block";
         WinJS.UI.Animation.fadeIn(theGrid);

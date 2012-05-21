@@ -27,10 +27,7 @@
     function itemInvoked(eventObject) {
         document.querySelector('.levelGrid').style.display = "none";
         var theCanvas = document.querySelector('#canvas');
-
-        //document.querySelector('#superContainer').style.backgroundImage = "url(/resources/woodrepeater.jpg)";
-
-        var item = eventObject.detail.itemPromise._value.data;
+                var item = eventObject.detail.itemPromise._value.data;
 
         startingLevel = item.group.key;
 
@@ -101,6 +98,14 @@
                 document.querySelector('#canvas').style.display = 'inline';
             } else {
                 document.querySelector('.levelGrid').style.display = 'block';
+
+                //var levelGrid = document.querySelector('.levelGrid').winControl;
+
+                //if (eventObject.viewState === 3) {
+                //    levelGrid.layout = new WinJS.UI.ListLayout();
+                //} else {
+                //    levelGrid.layout = new WinJS.UI.GridLayout({ groupHeaderPosition: "top" });
+                //}
             }
 
             document.querySelector('#snappedMessage').style.display = 'none';
@@ -123,8 +128,23 @@
 
     function windowResized(e) {
         var c = document.getElementById("canvas");
+
+        //var cWidth = 640;
+        //var cHeight = 480;
+        //var canvasRatio = cWidth / cHeight;
+
         screenHeight = window.outerHeight;
         screenWidth = window.outerWidth;
+        //var screenRatio = screenWidth / screenHeight;
+
+        //if (screenRatio > canvasRatio) {
+        //    c.height = cWidth / screenRatio;
+        //    c.width = cWidth;
+        //} else {
+        //    c.height = cHeight;
+        //    c.width = cHeight * screenRatio;
+        //}
+        
         scaleFactorY = c.height / screenHeight;
         scaleFactorX = c.width / screenWidth;
     }
@@ -141,6 +161,8 @@
             WinJS.UI.processAll().then(function (e) {
                 screenHeight = window.outerHeight;
                 screenWidth = window.outerWidth;
+
+                //Windows.Graphics.Display.DisplayProperties.autoRotationPreferences = Windows.Graphics.Display.DisplayOrientations.landscape;
 
                 var appView = Windows.UI.ViewManagement.ApplicationView;
                 appView.getForCurrentView().onviewstatechanged = _viewstatechanged.bind(this);

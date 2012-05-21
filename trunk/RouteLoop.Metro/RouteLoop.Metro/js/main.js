@@ -90,6 +90,7 @@ function Game() {
 	}
 
 	this.resume = function () {
+	    clearInterval(intervalId);
 	    intervalId = setInterval(runGame, 1000 / 30);
     }
 	
